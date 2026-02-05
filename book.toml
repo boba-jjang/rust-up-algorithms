@@ -1,0 +1,20 @@
+[book]
+title = "rust-up-algorithms"
+authors = ["Jae-Won Jang"]
+language = "en"
+src = "src"
+
+[output.html]
+default-theme = "rust"
+preferred-dark-theme = "ayu"
+smart-punctuation = false
+git-repository-url = "https://github.com/boba-jjang/rust-up-algorithms"
+edit-url-template = "https://github.com/boba-jjang/rust-up-algorithms/edit/main/book/src/{path}"
+
+[output.html.fold]
+enable = true
+level = 0
+
+[preprocessor.embedify]
+footer.enable = true
+footer.message = "Copyright © 2026 • Created by [Jay Jang](https://jwjang.net/)"
