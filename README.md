@@ -65,6 +65,7 @@ Each chapter generally follows this structure:
 
 Rough structure:
 
+```
 src/
 ├── intro.md
 ├── primer/
@@ -76,6 +77,7 @@ src/
 ├── trees/
 ├── graphs/
 └── dynamic-programming/
+```
 
 I will try to add visuals, as they help me clarify reasoning.
 
