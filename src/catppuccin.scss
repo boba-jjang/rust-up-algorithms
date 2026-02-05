@@ -1,0 +1,120 @@
+@use "sass:map";
+@use "@catppuccin/palette/scss/catppuccin" as catppuccin;
+@use "@catppuccin/highlightjs/sass/_theme" as hljs;
+
+// filters taken from https://userstyles.catppuccin.com/contributing/guides/images-and-svgs/
+$filters: (
+  latte: (
+    "subtext0": brightness(0) saturate(100%) invert(47%) sepia(6%)
+      saturate(1263%) hue-rotate(195deg) brightness(90%) contrast(81%),
+    "blue": brightness(0) saturate(100%) invert(30%) sepia(80%) saturate(1850%)
+      hue-rotate(209deg) brightness(94%) contrast(105%),
+  ),
+  frappe: (
+    "subtext0": brightness(0) saturate(100%) invert(82%) sepia(6%)
+      saturate(1287%) hue-rotate(192deg) brightness(86%) contrast(85%),
+    "blue": brightness(0) saturate(100%) invert(68%) sepia(16%) saturate(1070%)
+      hue-rotate(185deg) brightness(96%) contrast(95%),
+  ),
+  macchiato: (
+    "subtext0": brightness(0) saturate(100%) invert(75%) sepia(18%)
+      saturate(361%) hue-rotate(190deg) brightness(91%) contrast(86%),
+    "blue": brightness(0) saturate(100%) invert(67%) sepia(17%) saturate(1007%)
+      hue-rotate(183deg) brightness(99%) contrast(94%),
+  ),
+  mocha: (
+    "subtext0": brightness(0) saturate(100%) invert(84%) sepia(9%)
+      saturate(767%) hue-rotate(192deg) brightness(84%) contrast(84%),
+    "blue": brightness(0) saturate(100%) invert(68%) sepia(18%) saturate(951%)
+      hue-rotate(180deg) brightness(98%) contrast(100%),
+  ),
+);
+
+@each $flavor, $colors in catppuccin.$palette {
+  .#{$flavor} {
+    @include hljs.highlights($flavor);
+
+    // Each heading is technically a link but
+    // we don't want to highlight it as `blue`
+    :is(h1, h2, h3, h4, h5, h6) {
+      a code {
+        color: map.get($colors, "text");
+      }
+    }
+    a code {
+      color: map.get($colors, "blue");
+    }
+    code {
+      color: map.get($colors, "text");
+      background: map.get($colors, "mantle");
+    }
+    blockquote {
+      blockquote {
+        border-top: 0.1em solid map.get($colors, "surface2");
+        border-bottom: 0.1em solid map.get($colors, "surface2");
+      }
+    }
+    hr {
+      border-color: map.get($colors, "surface2");
+      border-style: solid;
+    }
+    del {
+      color: map.get($colors, "overlay2");
+    }
+    .ace_gutter {
+      color: map.get($colors, "overlay1");
+      background: map.get($colors, "mantle");
+    }
+    .ace_gutter-active-line.ace_gutter-cell {
+      color: map.get($colors, "pink");
+      background: map.get($colors, "mantle");
+    }
+    .tooltiptext {
+      background: map.get($colors, "mantle");
+      color: map.get($colors, "text");
+    }
+  }
+}
+
+@each $flavor, $colors in catppuccin.$palette {
+  .#{$flavor} {
+    --bg: #{map.get($colors, "base")};
+    --fg: #{map.get($colors, "text")};
+    --sidebar-bg: #{map.get($colors, "mantle")};
+    --sidebar-fg: #{map.get($colors, "text")};
+    --sidebar-non-existant: #{map.get($colors, "overlay0")};
+    --sidebar-active: #{map.get($colors, "blue")};
+    --sidebar-spacer: #{map.get($colors, "overlay0")};
+    --scrollbar: #{map.get($colors, "overlay0")};
+    --icons: #{map.get($colors, "overlay0")};
+    --icons-hover: #{map.get($colors, "overlay2")};
+    --links: #{map.get($colors, "blue")};
+    --inline-code-color: #{map.get($colors, "text")};
+    --theme-popup-bg: #{map.get($colors, "mantle")};
+    --theme-popup-border: #{map.get($colors, "overlay0")};
+    --theme-hover: #{map.get($colors, "surface0")};
+    --quote-bg: #{map.get($colors, "mantle")};
+    --quote-border: #{map.get($colors, "crust")};
+    --table-border-color: #{map.get($colors, "surface0")};
+    --table-header-bg: #{map.get($colors, "mantle")};
+    --table-alternate-bg: #{map.get($colors, "mantle")};
+    --searchbar-border-color: #{map.get($colors, "surface0")};
+    --searchbar-bg: #{map.get($colors, "mantle")};
+    --searchbar-fg: #{map.get($colors, "text")};
+    --searchbar-shadow-color: #{map.get($colors, "crust")};
+    --searchresults-header-fg: #{map.get($colors, "text")};
+    --searchresults-border-color: #{map.get($colors, "surface0")};
+    --searchresults-li-bg: #{map.get($colors, "base")};
+    --sidebar-header-border-color: #{map.get($colors, "lavender")};
+    --search-mark-bg: #{map.get($colors, "peach")};
+    --warning-border: #{map.get($colors, "peach")};
+    --color-scheme: #{if($flavor == "latte", "light", "dark")};
+    --copy-button-filter: #{map.get($filters, $flavor, "subtext0")};
+    --copy-button-filter-hover: #{map.get($filters, $flavor, "blue")};
+    --blockquote-note-color: #{map.get($colors, "blue")};
+    --blockquote-tip-color: #{map.get($colors, "green")};
+    --blockquote-important-color: #{map.get($colors, "mauve")};
+    --blockquote-warning-color: #{map.get($colors, "yellow")};
+    --blockquote-caution-color: #{map.get($colors, "red")};
+  }
+}

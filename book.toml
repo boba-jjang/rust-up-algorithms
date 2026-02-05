@@ -1,15 +1,16 @@
 [book]
-title = "rust-up-algorithms"
-authors = ["Jae-Won Jang"]
+title = "Rust Up Algorithms"
+authors = ["Jay Jang"]
 language = "en"
-src = "src"
+
 
 [output.html]
-default-theme = "rust"
-preferred-dark-theme = "ayu"
+default-theme = "latte"
+preferred-dark-theme = "mocha"
 smart-punctuation = false
 git-repository-url = "https://github.com/boba-jjang/rust-up-algorithms"
 edit-url-template = "https://github.com/boba-jjang/rust-up-algorithms/edit/main/book/src/{path}"
+additional-css = ["./theme/catppuccin.css"]
 
 [output.html.fold]
 enable = true
