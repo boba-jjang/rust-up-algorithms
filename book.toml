@@ -18,4 +18,4 @@ level = 0
 
 [preprocessor.embedify]
 footer.enable = true
-footer.message = "Copyright © 2026 • Created by [Jay Jang](https://jwjang.net/)"
+footer.message = "Copyright © 2026 • Created by [Jay Jang](https://jwj.fyi/)"
